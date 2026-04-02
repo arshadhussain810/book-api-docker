@@ -24,11 +24,11 @@ Once the containers are running (via docker-compose up), follow these steps to t
 
 ### Step 2: Saving books and reviews
 1. search for a book: use the GET /api/books/search endpoint
-*input: title = "The hobbit"
-*what happens: the app checks redis(miss) -> calls external api -> saves the result as cache(ttl 5min).
-*copy the bookId you want to review.
+* input: title = "The hobbit"
+* what happens: the app checks redis(miss) -> calls external api -> saves the result as cache(ttl 5min).
+* copy the bookId you want to review.
 
-2. Add User review: use the POST /api/reviews (to add both book and review) use POST /api/books (to add just the book)
+2. Add User review: use the POST /api/reviews (to add both book and review) use POST /api/books (to add just the book).
 *payload for /api/reviews:
 ```
 {
@@ -37,13 +37,13 @@ Once the containers are running (via docker-compose up), follow these steps to t
   "comment": "string"
 }
 ```
-*once you sent the post request, if the cache has not expired, no external api calls will be made. book data will come from the cache.
+* once you sent the post request, if the cache has not expired, no external api calls will be made. book data will come from the cache.
 
 4. Get Review List: Use GET /api/reviews/book to see your saved review. This response is also cached for high-speed retrieval.
    
 ### Strp 3: Cleaning & Management
-*Use PATCH /api/reviews to edit reviews(payload is same as POST /api/reviews)
-*Use DELETE /api/reviews to delete just the review, book stays in the db for you to review later
-*use DELETE /api/reviews to delete book and its review from the db
+* Use PATCH /api/reviews to edit reviews(payload is same as POST /api/reviews).
+* Use DELETE /api/reviews to delete just the review, book stays in the db for you to review later.
+* use DELETE /api/reviews to delete book and its review from the db.
 
 
