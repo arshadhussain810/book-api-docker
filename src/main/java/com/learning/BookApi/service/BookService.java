@@ -83,6 +83,7 @@ public class BookService {
     }
 
     @Transactional
+    @CacheEvict(value = "reviewedBooks", allEntries = true)
     public void addBookToLibrary(String bookId){
 
         if(bookRepository.existsById(bookId)){
@@ -99,6 +100,7 @@ public class BookService {
     }
 
     @Transactional
+    @CacheEvict(value = "reviewedBooks", allEntries = true)
     public void createBookReview(ReviewCreateRequest reviewCreateRequest){
 
         //Check if book and review already exist.
@@ -145,6 +147,7 @@ public class BookService {
     }
 
     @Transactional
+    @CacheEvict(value = "reviewedBooks", allEntries = true)
     public void deleteReviewByBookId(String bookId){
         Book book = bookRepository.findById(bookId).orElseThrow(()->
                 new BookNotFoundException("Incorrect Book id"));
@@ -160,6 +163,7 @@ public class BookService {
     }
 
     @Transactional
+    @CacheEvict(value = "reviewedBooks", allEntries = true)
     public void deleteBookById(String bookId){
         Book book = bookRepository.findById(bookId).orElseThrow(()->
                 new BookNotFoundException("Incorrect Book id"));
