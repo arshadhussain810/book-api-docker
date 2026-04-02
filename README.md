@@ -30,11 +30,13 @@ Once the containers are running (via docker-compose up), follow these steps to t
 
 2. Add User review: use the POST /api/reviews (to add both book and review) use POST /api/books (to add just the book)
 *payload for /api/reviews:
+```
 {
   "bookId": "string",
   "stars": 10,
   "comment": "string"
 }
+```
 *once you sent the post request, if the cache has not expired, no external api calls will be made. book data will come from the cache.
 
 4. Get Review List: Use GET /api/reviews/book to see your saved review. This response is also cached for high-speed retrieval.
