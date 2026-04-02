@@ -18,8 +18,12 @@ A high-performance RESTful backend service designed to manage book metadata and 
 ## How to use
 Once the containers are running (via docker-compose up), follow these steps to test the full lifecycle of the application:
 
-Step 1: Access the Interactive UI
-Open your browser and navigate to: http://localhost:8000/swagger-ui/index.html
+Step 1:
+* Access the Interactive UI
+* Open your browser and navigate to: http://localhost:8000/swagger-ui/index.html
+Step 2:
+1. search for a book: use the GET /api/books/search endpoint
+   *input: title = "The hobbit"
+   *what happens: the app checks redis(miss) -> calls external api -> saves the result as cache. 
 
-Step 2: Search for a Book: Use the GET /api/books/search endpoint.Input: title = "The Hobbit"
-What happens: The app checks Redis (Miss) Calls OpenLibrary API  Saves to MySQL  Caches in Redis.
+
